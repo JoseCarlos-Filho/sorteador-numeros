@@ -1,7 +1,13 @@
+//destructur do console.log()
 const {log} = console;
+
+// declaração de array
 let quantidadeDeNumerosSorteados = [];
+
+// declaração do botão reiniciar
 const btnReiniciar = document.querySelector("#btn-reiniciar");
 
+// função que percorre uma faixa numerica comparando o número secreto.
 function faixaDeNumero(numeroSecreto, numeroInicial, numeroFinal) {
     for(numeroInicial; numeroInicial <= numeroFinal; numeroInicial++) {
         if (numeroInicial === numeroSecreto) {
@@ -12,11 +18,13 @@ function faixaDeNumero(numeroSecreto, numeroInicial, numeroFinal) {
     return quantidadeDeNumerosSorteados;
 }
 
+// função que gera o número secreto
 function gerarNumerosAleatorio(numeroFinal) {
     let numeroSorteado = Math.floor(Math.random() * numeroFinal + 1);
     return numeroSorteado;
 }
 
+// função que limpa os inputs de entrada.
 function limpaCampos() {
     let quantidade = document.querySelector("#quantidade");
     let inicial = document.querySelector("#de");
@@ -33,6 +41,7 @@ function limpaCampos() {
     }
 }
 
+// Lógica do botão reiniciar com chamada através do evento onclick
 function reiniciar() {
     limpaCampos();
     quantidadeDeNumerosSorteados = [];
@@ -42,6 +51,8 @@ function reiniciar() {
 
 }
 
+
+// lógico do botão sortear com chamada de função onclick
 function sortear() {
     
     const elementoQuantidadeDeNumeros = parseInt(document.getElementById("quantidade").value);
