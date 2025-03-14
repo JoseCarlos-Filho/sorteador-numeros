@@ -62,7 +62,7 @@ function sortear() {
     
     let arrayNumerosSorteados = [];
     
-    log(elementoNumeroFinal, elementoNumeroInicial, elementoQuantidadeDeNumeros);
+    // log(elementoNumeroFinal, elementoNumeroInicial, elementoQuantidadeDeNumeros);
     if (elementoQuantidadeDeNumeros <= 0 || elementoNumeroInicial <= 0 || elementoNumeroFinal <= 0) {
         alert("Preencha os campos com valores maiores que 0!");
         elementoResultado.innerHTML = "Valores de entrada inconsistente...";
@@ -78,7 +78,7 @@ function sortear() {
 
         for(let quantidade = 0; quantidade < elementoQuantidadeDeNumeros; quantidade++) {
             let numeroSecreto = gerarNumerosAleatorio(elementoNumeroFinal);
-            log(numeroSecreto);
+            // log(numeroSecreto);
             arrayNumerosSorteados = faixaDeNumero(numeroSecreto, elementoNumeroInicial, elementoNumeroFinal);
         }
         elementoResultado.innerText = '';
