@@ -3,12 +3,10 @@ const {log} = console;
 
 // declaração de array
 let quantidadeDeNumerosSorteados = [];
-// declaração do botão reiniciar
-const btnReiniciar = document.querySelector("#btn-reiniciar");
 
 // função que gera o número secreto
-function gerarNumerosAleatorio(numeroFinal) {
-    let numeroSorteado = Math.floor(Math.random() * numeroFinal + 1);
+function gerarNumerosAleatorio(numeroInicial, numeroFinal) {
+    let numeroSorteado = Math.floor(Math.random() * (numeroFinal - numeroInicial + 1)) + numeroInicial;
     return numeroSorteado;
 }
 
@@ -24,9 +22,7 @@ function reiniciar() {
     limpaCampos();
     quantidadeDeNumerosSorteados = [];
     document.querySelector('#resultado .texto__paragrafo').innerText = '';
-    btnReiniciar.classList.toggle('container__botao');
-    btnReiniciar.classList.toggle('container__botao-desabilitado');
-
+    mudarEstadoDoBotaoReiniciar();
 }
 
 
@@ -60,7 +56,7 @@ function sortear() {
             let numeroSecreto;
 
             do {
-                numeroSecreto = gerarNumerosAleatorio(elementoNumeroFinal);
+                numeroSecreto = gerarNumerosAleatorio(elementoNumeroInicial ,elementoNumeroFinal);
             } while (arrayNumerosSorteados.includes(numeroSecreto) || numeroSecreto < elementoNumeroInicial);
 
             arrayNumerosSorteados.push(numeroSecreto);
@@ -69,7 +65,18 @@ function sortear() {
         elementoResultado.innerText = '';
         elementoResultado.innerHTML = `<br>Números sorteados: ${arrayNumerosSorteados}<br>`;
 
-        btnReiniciar.classList.toggle('container__botao');
-        btnReiniciar.classList.toggle('container__botao-desabilitado');
+        mudarEstadoDoBotaoReiniciar();
     }
 } 
+
+function mudarEstadoDoBotaoReiniciar() {
+    // declaração do botão reiniciar
+    const btnReiniciar = document.querySelector("#btn-reiniciar");
+    if (btnReiniciar.classList.contains('container__botao-desabilitado')) {
+        btnReiniciar.classList.remove('container__botao-desabilitado');
+        btnReiniciar.classList.add('container__botao');
+    } else {
+        btnReiniciar.classList.remove('container__botao');
+        btnReiniciar.classList.add('container__botao-desabilitado');
+    }
+}
